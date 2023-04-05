@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Bootstrap 5 CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+    <title>Data Integration</title>
+    <style>
+       body {
+      font-size: 20px;
+      line-height: 1.5;
+      background-color: #fff3cd;
+
+    }
+      /* Set the height of the sidebar to 100% */
+
+      .sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+
+      
+
+      /* Style the links inside the sidebar */
+      .sidebar a {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      .sidebar a:hover {
+
+  background-color: gray;
+  color: black;
+}
+
+.nav-item a:hover {
+
+  background-color: #ddd;
+  color: black;
+}
+
+      /* Set the main content area to the same height as the sidebar */
+      .main {
+        height: 100%;
+        /* Set the padding of the main content area */
+        padding: 20px;
+      }
+
+      /* Style the cards */
+      .card {
+        margin-bottom: 20px;
+      }
+
+      /* Style the table in the 6th card */
+      #tableCard table {
+        width: 100%;
+      }
+
+      main {
+        display: flex;
+        flex-wrap: nowrap;
+        height: 100vh;
+        height: -webkit-fill-available;
+        max-height: 100vh;
+        overflow-x: auto;
+        overflow-y: hidden;
+      }
+       #topnav {
+  color: white; /* set the background color */
+}
+
+
+    </style>
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid" >
+
+      <a class="navbar-brand" href="services-home-page.html" style="font-weight:bold;">Integration</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+
+
+        <ul class="navbar-nav">
+          <!-- <li class=" nav-item">
+          <a href="index.php" class="nav-link text-decoration-none" style="color:white; font-weight:bold;">Login</a>
+          </li> -->
+          <li class="nav-item"><a class="nav-link" href="edit_profile.php" style="color: white;">Edit Profile</a></li>
+          <li class="nav-item"><a class="nav-link" href="ureset.php" style="color: white;">Change Password</a></li>
+          <li class="nav-item" role="separator" class="divider"></li>
+          <li class="nav-item"><a class="nav-link" href="logout.php" style="color: white;"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+    
+    <main>
+      <nav
+        id="sidebarMenu"
+        class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse"
+        style="height: 100vh"
+        
+      >
+        <div
+          class="position-sticky pt-3 d-flex flex-column flex-shrink-0 p-3 bg-light"
+        >
+          <ul class="flex-column mb-auto nav nav-pills">
+            <li class="nav-item">
+              <!-- <a class="nav-link active" aria-current="page" href="#"> -->
+              <a  aria-current="page" href="#">
+                New
+              </a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link" title="Navigates to services page" href="#"> Home </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" title="View all projects" href="#"> Explore </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" title="View all packages" href="#"> Packages </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" title="Total number of jobs triggered" href="#"> Jobs </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" title="Information about the tool" href="#"> About </a>
+            </li>
+             <li class="nav-item">
+              <a class="nav-link" title="You can contact admin for support" href="#"> Contact Admin </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- Main content area -->
+      <div class="col-md-9 ms-sm-auto col-lg-10 px-md-4 mt-5">
+        <!-- Card layout -->
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title" style="text-decoration: none;color: #C78744;"><strong> Overview </strong></h5>
+                <p class="card-text">
+                  Total Connections  20 <br>
+                  Total Packages     15<br>
+                  Total Projects     30 <br>
+                  Total Integrations 10 <br>
+                  Total Mappings     05 <br>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title" style="text-decoration: none;color: #C78744;"><strong>Runtime Environment</strong></h5>
+                <p class="card-text">
+                  server1.host.com <br>
+                  server2.host.com <br>
+                  server3.host.com <br>
+                  server4.host.com <br>
+                  server5.host.com <br>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title" style="text-decoration: none;color: #C78744;"><strong>Job Metrics</strong></h5>
+                <img
+                  src="images/horizontal-chart.png"
+                  height="150"
+                  width="300"
+                  class="rounded mx-auto d-block"
+                  alt="..."
+                />
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title" style="text-decoration: none;color: #C78744;"><strong>Recent Projects</strong></h5>
+                <p class="card-text">
+                
+                  Project 1 <br>
+                  Project 2 <br>
+                  Project 3 <br>
+                  Project 4 <br>
+                  Project 5 <br>
+                  <br>
+                  <br>
+                 
+
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-8">
+            <div id="tableCard" class="card">
+              <div class="card-body">
+                <h5 class="card-title" style="text-decoration: none;color: #C78744;"><strong>Recent Access</strong></h5>
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Location</th>
+                      <th>Last Access</th>
+                      
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Mapping</td>
+                      <td>File Path</td>
+                      <td>April 01 2023</td>
+          
+                    </tr>
+                    <tr>
+                      <td>Mapping task</td>
+                      <td>File Path</td>
+                      <td>April 02 2023</td>
+                    </tr>
+                    <tr>
+                      <td>Task Flow</td>
+                      <td>File Path</td>
+                      <td>April 03 2023</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+  </body>
+
+  <footer class="d-flex align-items-center py-2 mt-4 border-top fixed-bottom" style="font-size: 16px;background-color: #6c757d; width: 100%; left:0;">
+    <!-- <div class=" col-md-4 d-flex align-items-center">
+        <a href="" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+            <svg class="bi" width="20" height="24">
+                <use xlink:href="#bootstrap"></use>
+            </svg>
+            About
+        </a>
+
+        <a href="" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+            <svg class="bi" width="10" height="24">
+                <use xlink:href="#bootstrap"></use>
+            </svg>
+            Contact Us
+        </a>
+
+    </div> -->
+    <div class="col-md-8 d-flex align-items-center">
+        <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+            <svg class="bi" width="100" height="24">
+                <use xlink:href="#bootstrap"></use>
+            </svg>
+        </a>
+        <span class="mb-3 mb-md-0 text-white">Integrations Services Inc</span>
+    </div>
+    <div class="col-md-3 d-flex justify-content-end">
+        <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+            <svg class="bi" width="100" height="24">
+                <use xlink:href="#bootstrap"></use>
+            </svg>
+        </a>
+        <span class="mb-3 mb-md-0 text-white">© 2022 All Rights Reserved</span>
+    </div>
+
+    <!-- <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+        <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24">
+                    <use xlink:href="#twitter"></use>
+                </svg></a></li>
+        <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24">
+                    <use xlink:href="#instagram"></use>
+                </svg></a></li>
+        <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24">
+                    <use xlink:href="#facebook"></use>
+                </svg></a></li>
+    </ul> -->
+</footer>
+</html>

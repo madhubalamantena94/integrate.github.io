@@ -1,0 +1,285 @@
+<?php
+session_start();
+if ($_SESSION['id'] != session_id()) {
+	header('location: index.php');
+}
+?>
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+	<link rel="manifest" href="img/site.webmanifest">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<title>Welcome to DigiWiki</title>
+	<link rel="stylesheet" href="../css/bootstrap.min.css">
+	<style type="text/css">
+		body {
+			font-size: 20px;
+			line-height: 1.5;
+			background-color: #ffda6a;
+		}
+
+		.glyphiconuser {
+			color: black;
+			font-size: 20px;
+		}
+	</style>
+
+</head>
+
+<body>
+	<nav class="navbar navbar-dark bg-primary">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<!-- <a class="navbar-brand" href="#">Digital Library with Wiki Cards</a> -->
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="welcome.php" style="color:black; font-weight:bold;">Digital Library with Wiki Cards<span class="sr-only">(current)</span></a></li>
+				</ul>
+
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user glyphiconuser"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="edit_profile.php">Edit Profile</a></li>
+							<li><a href="ureset.php">Change Password</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div><!-- /.navbar-collapse -->
+		</div><!-- /.container-fluid -->
+	</nav>
+
+
+	<style type="text/css">
+		body {
+			font-family: 'Verdana';
+			font-size: 16px;
+			font-weight: bold;
+		}
+
+		.panel {
+			border: 0;
+		}
+
+		form {
+			padding: 0 10px;
+		}
+
+		.addon-diff-color {
+			background-color: #f0ad4e;
+			color: white;
+		}
+
+		.panel-title {
+			color: #f0ad4e;
+			font-weight: bolder;
+		}
+
+		.sign-up,
+		.forgot-pass {
+			display: none;
+		}
+
+		.alert,
+		#loader {
+			display: none;
+		}
+	</style>
+	<script type="text/javascript">
+		$(document).ready(function() {
+
+			$.ajax({
+				url: 'action.php',
+				method: 'post',
+				data: 'action=checkCookie'
+			}).done(function(result) {
+				if (result) {
+					console.log(result)
+					var data = JSON.parse(result);
+					$('#updateUemail').val(data.email);
+
+				}
+			})
+
+			$('#updateName').keyup(function() {
+				// var regexp = new RegExp(/^[a-zA-Z]+$/);
+				var regexp = /^[a-zA-Z ]+$/;
+				if (regexp.test($('#updateName').val())) {
+					$('#updateName').closest('.form-group').removeClass('has-error');
+					$('#updateName').closest('.form-group').addClass('has-success');
+				} else {
+					$('#updateName').closest('.form-group').addClass('has-error');
+				}
+			})
+
+			$('#updateMobile').keyup(function() {
+				// var regexp = new RegExp(/^[a-zA-Z]+$/);
+				var regexp = /^[0-9]{10}$/;
+				if (regexp.test($('#updateMobile').val())) {
+					$('#updateMobile').closest('.form-group').removeClass('has-error');
+					$('#updateMobile').closest('.form-group').addClass('has-success');
+				} else {
+					$('#updateMobile').closest('.form-group').addClass('has-error');
+				}
+			})
+
+			$('#updateUemail').keyup(function() {
+				// var regexp = new RegExp(/^[a-zA-Z]+$/);
+				var regexp = /^[a-zA-Z0-9._]+@[a-zA-Z0-9._]+\.[a-zA-Z]{2,4}$/;
+				if (regexp.test($('#updateUemail').val())) {
+					$('#updateUemail').closest('.form-group').removeClass('has-error');
+					$('#updateUemail').closest('.form-group').addClass('has-success');
+				} else {
+					$('#updateUemail').closest('.form-group').addClass('has-error');
+				}
+			})
+
+
+
+
+
+
+
+			$('#updateProfile').click(function(event) {
+				event.preventDefault();
+				var formData = $('#update-frm').serialize();
+				console.log(formData);
+				$.ajax({
+					url: 'action.php',
+					method: 'post',
+					data: formData + '&action=updateProfile'
+				}).done(function(result) {
+					$('.alert').show();
+					$('#result').html(result);
+				})
+			})
+
+		})
+	</script>
+
+	</head>
+
+	<body>
+		<div class="container">
+			<h2 class="text-center" style="	font-size: 40px;
+			font-weight: bold;">Digital Library With Wiki Cards</h2>
+			<h3 class="text-center">Update your Profile</h3>
+			<hr>
+			<div class="row">
+				<div class="col-md-6 col-md-offset-3">
+					<div class="alert alert-danger alert-dismissible" role="alert">
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">x</button>
+						<div id="result"></div>
+					</div>
+
+				</div>
+
+				<div class="col-md-6 col-md-offset-3 sign-in">
+					<div class="panel">
+						<div class="panel-heading">
+							<h3 class="panel-title text-center">Update Form</h3>
+
+						</div>
+						<div class="panel-body">
+							<form id="update-frm" role="form" method="post" action="" class="form-horizontal">
+
+
+								<?php
+
+								require 'users.php';
+
+								$objUser = new Users();
+
+								$objUser->setEmail($_SESSION['email']);
+								$userDetails =  $objUser->getUserByEmail();
+
+
+
+
+								?>
+
+								<div class="form-group">
+									<div class="input-group">
+										<div class="input-group-addon addon-diff-color">
+											<span class="glyphicon glyphicon-user"></span>
+										</div>
+
+										<input type="text" class="form-control" id="updateName" name="updateName" value=<?php echo $userDetails['name']; ?>>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="input-group">
+
+										<div class="input-group-addon addon-diff-color">
+											<span class="glyphicon glyphicon-lock"></span>
+										</div>
+										<input type="text" class="form-control" id="updateMobile" name="updateMobile" value=<?php echo $userDetails['mobile']; ?>>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="input-group">
+										<div class="input-group-addon addon-diff-color">
+											<span class="glyphicon glyphicon-envelope"></span>
+										</div>
+										<input type="email" class="form-control" id="updateUemail" name="updateUemail" value=<?php echo ($userDetails['email']); ?>>
+									</div>
+								</div>
+
+
+								<div class="form-group">
+									<input type="submit" value="UPDATE" class="btn btn-warning btn-block" id="updateProfile" name="updateProfile">
+								</div>
+								<div class="form-group">
+									<label for="api">API Token:</label>
+									<div class="input-group">
+
+										<div class="input-group-addon addon-diff-color">
+											<span class="glyphicon glyphicon-envelope"></span>
+										</div>
+
+										<input type="text" class="form-control" id="apitoken" readonly name="apitoken" value=<?php echo ($userDetails['api_token']); ?>>
+									</div>
+
+								</div>
+
+
+
+							</form>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+		<?php
+		include('footer.php');
+		?>
+
+	</body>
+
+</html>
