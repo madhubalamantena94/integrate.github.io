@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>Welcome to Digital Library with Wiki Cards</title>
+	<title>Welcome to Integration Services</title>
 	<link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
@@ -182,17 +182,7 @@
 			})
 
 			$('#register').click(function(event) {
-				event.preventDefault();
-				var formData = $('#sign-up-frm').serialize();
-				console.log(formData);
-				$.ajax({
-					url: 'action.php',
-					method: 'post',
-					data: formData + '&action=register'
-				}).done(function(result) {
-					$('.alert').show();
-					$('#result').html(result);
-				})
+				document.location = 'auth.html';
 			})
 
 			$('#email').keyup(function() {
@@ -219,39 +209,14 @@
 
 			$('#login').click(function(event) {
 
-				var response = grecaptcha.getResponse();
-				//alert(response);
-				if (response.length == 0) {
-
-					alert("Please verify that you are not a robot");
-					return false;
-				}
+				
 				
 						document.location = 'auth.html';
 					
 			})
 
 			$('#reset').click(function(event) {
-				event.preventDefault();
-				var formData = $('#forgot-pass-frm').serialize();
-				console.log(formData);
-				$('#loader').show();
-				$.ajax({
-					url: 'action.php',
-					method: 'post',
-					data: formData + '&action=resetPass'
-				}).done(function(result) {
-					$('#loader').hide();
-					console.log(result);
-					var data = JSON.parse(result);
-					$('.alert').show();
-					if (data.status == 0) {
-						$('#result').html(data.msg);
-					} else {
-						$('#result').html(data.msg);
-					}
-
-				})
+				document.location = 'auth.html';
 			})
 
 		})
@@ -267,8 +232,8 @@
 		<div class=" vertical-center text-center">
 			<div class="container">
 				<h2 class="text-center " style="	font-size: 40px;
-			font-weight: bold;">Digital Library with Wiki Cards</h2>
-				<h4 class="text-center">CS518-Web programming Project</h4>
+			font-weight: bold;">Integration Services</h2>
+				
 				<hr>
 				<div class="row row">
 					<div class="col-md-6 col-md-offset-3">
@@ -373,9 +338,7 @@
 										<div style="position: relative; top: -30px; left: 40px; text-align: initial;"> Remember Me </div>
 									</div>
 
-									<div class="form-group">
-										<div class="g-recaptcha" data-sitekey="6LdI8CcjAAAAAEJ9gKSbZ9vq7nKLngHLws3YfPLk"></div>
-									</div>
+								
 
 									<div class="form-group">
 										<!--<a href="#" onClick="window.location.href = 'auth.php';"> <input type=" submit"  value="Login" class="btn btn-warning btn-block" id="login" name="login"></a> -->

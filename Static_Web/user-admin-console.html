@@ -16,6 +16,11 @@
         border-color: #77b6ff;
         box-shadow: none;
       }
+      .nav-item a:hover {
+
+  background-color: #ddd;
+  color: black;
+}
       .form-label {
         font-weight: bold;
       }
@@ -29,23 +34,53 @@
       tbody tr:nth-child(even) {
         background-color: #f8f9fa;
       }
+
+      h3 {text-align: center;
+margin-left: 400px;
+font-size: 30px;
+}
     </style>
   </head>
   <body style="background-color: #c78744">
-    <!-- Navbar -->
-    <nav class="navbar navbar-dark bg-primary">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="integration.html">User admin console</a>
+
+    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid" >
+
+      <a class="navbar-brand" href="integration.html" style="font-weight:bold;">Integration</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <h3><strong>Administration Console</strong></h3>
+
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+
+
+        <ul class="navbar-nav">
+          <!-- <li class=" nav-item">
+          <a href="index.php" class="nav-link text-decoration-none" style="color:white; font-weight:bold;">Login</a>
+          </li> -->
+      <li class="nav-item" title = 'Profile Information' style="background-color: Green; margin-left: 30px; margin-right: 10px;"><a class="nav-link" href="profile_page.html" style="color: black;">Add User</a></li>
+          
+          <li class="nav-item" role="separator" class="divider"></li>
+          <li class="nav-item" title = 'Log out of the session' style="background-color: skyblue; margin-left: 30px; margin-right: 10px;"><a class="nav-link" href="index.html" style="color: black;">Logout</a></li>
+
+        </ul>
       </div>
-    </nav>
+    </div>
+  </nav>
+    <!-- Navbar -->
+    
     <div class="container-fluid my-5 px-5">
       <div class="card" style="padding: 15px">
         <h5 class="card-title text-center">Visualization tab</h5>
         <div class="row justify-content-around">
           <div class="card" style="width: 18rem">
-            <div class="card-body">
-              <h5 class="card-title">Total number of users</h5>
-              <p class="card-text">50</p>
+            <div class="card-body" style="padding: 30px">
+              <h5 class="card-title" style ="text-align: center;">Total number of users</h5>
+              <p class="card-text" style ="text-align: center; margin-top: 10px; margin-bottom:10px; font-size:30px; color:Green;"> <strong>50</strong></p>
+              
               <!-- <a href="#" class="card-link">Card link</a>
                   <a href="#" class="card-link">Another link</a> -->
             </div>
